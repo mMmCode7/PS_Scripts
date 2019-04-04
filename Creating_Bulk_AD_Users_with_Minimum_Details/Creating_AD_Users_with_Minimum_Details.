@@ -1,0 +1,20 @@
+Import-Module ActiveDirectory
+
+$Userlist = Get-Content ".txt file path" #for example C:\UserNameList.txt
+$OU = " OU Path"
+$pass = "TechSpi@123"  # provide the initial password.
+| ConvertTo-SecureString -AsPlainText -Force
+
+foreach ($user in $userList){
+
+New-ADUser -name $user -SamAccountName $user  -Path $OU
+Write-host "User $user created"
+}
+
+foreach ($user in $Userlist){
+
+Set-ADAccountPassword -Identity $User -NewPassword $pass
+write-host "password Rest for $user"
+Enable-ADAccount $user
+Write-Host "$user account enabled"
+}
