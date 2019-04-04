@@ -1,4 +1,5 @@
 Install-Module ImportExcel
+Import-Module Activedirectory
 
 $Excel_location = "Excel path"   # Example C:\UsersInfo.xlsx
 # excel must have two columns named as ( ADID -  Attribute )
